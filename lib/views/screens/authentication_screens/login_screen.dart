@@ -3,6 +3,8 @@ import 'dart:developer' as dev;
 
 import 'package:easy_order/core/constants/app_assets.dart';
 import 'package:easy_order/core/constants/app_sizes.dart';
+import 'package:easy_order/core/theme/app_colors.dart';
+import 'package:easy_order/core/theme/app_text_styles.dart';
 import 'package:easy_order/generated/l10n.dart';
 import 'package:easy_order/logic/providers/language_provider.dart';
 import 'package:easy_order/views/screens/authentication_screens/widgets/account_query_row.dart';
@@ -25,6 +27,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = context.watch<LanguageProvider>();
+    final currentLocale = provider.appLocale;
     return Scaffold(
       body: SafeArea(
         child: LayoutBuilder(
@@ -41,11 +45,37 @@ class _LoginScreenState extends State<LoginScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            CustomButton(
-                              onPressed: () => context
-                                  .read<LanguageProvider>()
-                                  .changeLanguage(),
-                              title: S.of(context).languageName,
+                            PopupMenuButton<Locale>(
+                              initialValue: currentLocale,
+                              child: Container(
+                                padding: EdgeInsets.all(15.0),
+                                decoration: BoxDecoration(
+                                  color: AppColors.buttonBlue,
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    S.of(context).languageName,
+                                    style: AppTextStyles.buttontitle,
+                                  ),
+                                ),
+                              ),
+                              onSelected: (Locale locale) {
+                                provider.setLanguage(locale);
+                              },
+                              itemBuilder: (context) => [
+                                const PopupMenuItem(
+                                  value: Locale('en'),
+                                  child: Text('English'),
+                                ),
+                                const PopupMenuItem(
+                                  value: Locale('ru'),
+                                  child: Text('Русский'),
+                                ),
+                                const PopupMenuItem(
+                                  value: Locale('ky'),
+                                  child: Text('Кыргызсча'),
+                                ),
+                              ],
                             ),
                           ],
                         ),
