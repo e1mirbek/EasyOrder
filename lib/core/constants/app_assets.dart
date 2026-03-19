@@ -5,4 +5,5 @@ class AppAssets {
   static const String isFlagEn = 'assets/icons/usa.svg';
   static const String isFlagRu = 'assets/icons/ru.svg';
   static const String isFlagKy = 'assets/icons/ky.svg';
+  static const String userIcon = 'assets/icons/user.jpeg';
 }
