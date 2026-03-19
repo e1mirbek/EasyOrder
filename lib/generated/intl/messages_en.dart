@@ -27,6 +27,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "emailHint": MessageLookupByLibrary.simpleMessage("Enter your email"),
     "emailLabel": MessageLookupByLibrary.simpleMessage("Email"),
+    "fullNameHint": MessageLookupByLibrary.simpleMessage(
+      "Enter your full name",
+    ),
+    "fullNameLabel": MessageLookupByLibrary.simpleMessage("Full Name"),
     "languageName": MessageLookupByLibrary.simpleMessage("English"),
     "loginSubtitle": MessageLookupByLibrary.simpleMessage(
       "Discover exclusive global deals.",
@@ -34,6 +38,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginTitle": MessageLookupByLibrary.simpleMessage("Welcome back!"),
     "passwordHint": MessageLookupByLibrary.simpleMessage("Enter your password"),
     "passwordLabel": MessageLookupByLibrary.simpleMessage("Password"),
+    "registerSubTitle": MessageLookupByLibrary.simpleMessage(
+      "Join us and start using the app",
+    ),
+    "registerTitle": MessageLookupByLibrary.simpleMessage(
+      "Create your account",
+    ),
+    "signIn": MessageLookupByLibrary.simpleMessage("Sign in"),
     "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
   };
 }

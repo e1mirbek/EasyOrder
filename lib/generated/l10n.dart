@@ -74,6 +74,26 @@ class S {
     );
   }
 
+  /// `Create your account`
+  String get registerTitle {
+    return Intl.message(
+      'Create your account',
+      name: 'registerTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Join us and start using the app`
+  String get registerSubTitle {
+    return Intl.message(
+      'Join us and start using the app',
+      name: 'registerSubTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Email`
   String get emailLabel {
     return Intl.message('Email', name: 'emailLabel', desc: '', args: []);
@@ -94,12 +114,42 @@ class S {
     );
   }
 
+  /// `Full Name`
+  String get fullNameLabel {
+    return Intl.message(
+      'Full Name',
+      name: 'fullNameLabel',
+      desc: 'Label for full name input field',
+      args: [],
+    );
+  }
+
+  /// `Enter your full name`
+  String get fullNameHint {
+    return Intl.message(
+      'Enter your full name',
+      name: 'fullNameHint',
+      desc: 'Placeholder for full name input field',
+      args: [],
+    );
+  }
+
   /// `Enter your password`
   String get passwordHint {
     return Intl.message(
       'Enter your password',
       name: 'passwordHint',
       desc: 'Placeholder text for password input field',
+      args: [],
+    );
+  }
+
+  /// `Sign in`
+  String get signIn {
+    return Intl.message(
+      'Sign in',
+      name: 'signIn',
+      desc: 'Button text for user login',
       args: [],
     );
   }

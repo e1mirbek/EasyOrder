@@ -29,6 +29,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "Электрондук почтаңызды киргизиңиз",
     ),
     "emailLabel": MessageLookupByLibrary.simpleMessage("Электрондук почта"),
+    "fullNameHint": MessageLookupByLibrary.simpleMessage(
+      "Толук аты-жөнүңүздү киргизиңиз",
+    ),
+    "fullNameLabel": MessageLookupByLibrary.simpleMessage("Толук аты-жөнү"),
     "languageName": MessageLookupByLibrary.simpleMessage("Кыргызча"),
     "loginSubtitle": MessageLookupByLibrary.simpleMessage(
       "Дүйнөлүк өзгөчө сунуштарды өзүңүз үчүн ачыңыз.",
@@ -36,6 +40,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginTitle": MessageLookupByLibrary.simpleMessage("Аккаунтуңузга кириңиз"),
     "passwordHint": MessageLookupByLibrary.simpleMessage("Сырсөздү киргизиңиз"),
     "passwordLabel": MessageLookupByLibrary.simpleMessage("Сырсөз"),
+    "registerSubTitle": MessageLookupByLibrary.simpleMessage(
+      "Бизге кошулуп, колдонмону колдоно баштаңыз",
+    ),
+    "registerTitle": MessageLookupByLibrary.simpleMessage("Аккаунт түзүңүз"),
+    "signIn": MessageLookupByLibrary.simpleMessage("Кирүү"),
     "signUp": MessageLookupByLibrary.simpleMessage("Катталуу"),
   };
 }

@@ -27,6 +27,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "emailHint": MessageLookupByLibrary.simpleMessage("Введите вашу почту"),
     "emailLabel": MessageLookupByLibrary.simpleMessage("Электронная почта"),
+    "fullNameHint": MessageLookupByLibrary.simpleMessage(
+      "Введите ваше полное имя",
+    ),
+    "fullNameLabel": MessageLookupByLibrary.simpleMessage("Полное имя"),
     "languageName": MessageLookupByLibrary.simpleMessage("Русский"),
     "loginSubtitle": MessageLookupByLibrary.simpleMessage(
       "Откройте для себя эксклюзивные мировые предложения.",
@@ -36,6 +40,11 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "passwordHint": MessageLookupByLibrary.simpleMessage("Введите пароль"),
     "passwordLabel": MessageLookupByLibrary.simpleMessage("Пароль"),
+    "registerSubTitle": MessageLookupByLibrary.simpleMessage(
+      "Присоединяйтесь и начните пользоваться приложением",
+    ),
+    "registerTitle": MessageLookupByLibrary.simpleMessage("Создайте аккаунт"),
+    "signIn": MessageLookupByLibrary.simpleMessage("Войти"),
     "signUp": MessageLookupByLibrary.simpleMessage("Зарегистрироваться"),
   };
 }

@@ -1,16 +1,19 @@
+import 'package:easy_order/core/constants/app_routes.dart';
 import 'package:easy_order/core/theme/app_theme.dart';
 import 'package:easy_order/generated/l10n.dart';
-import 'package:easy_order/logic/providers/language_provider.dart';
+import 'package:easy_order/controllers/providers/language_provider.dart';
 import 'package:easy_order/views/screens/authentication_screens/login_screen.dart';
+import 'package:easy_order/views/screens/authentication_screens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => LanguageProvider(),
+    MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => LanguageProvider())],
       child: const MyApp(),
     ),
   );
@@ -23,9 +26,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final languageController = Provider.of<LanguageProvider>(context);
     return MaterialApp(
+      // --- Основные настройки ---
+      title: 'Easy Order',
       debugShowCheckedModeBanner: false,
-      locale: languageController.appLocale,
       theme: AppTheme.lightTheme,
+      // --- Навигация ---
+      initialRoute: AppRoutes.login,
+      routes: {
+        AppRoutes.login: (context) => const LoginScreen(),
+        AppRoutes.register: (context) => const RegisterScreen(),
+      },
+      // --- Локализация ---
+      locale: languageController.appLocale,
       localizationsDelegates: const [
         S.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -37,7 +49,6 @@ class MyApp extends StatelessWidget {
         Locale('ru', ''),
         Locale('ky', ''),
       ],
-      home: const LoginScreen(),
     );
   }
 }

@@ -3,22 +3,18 @@ import 'package:easy_order/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class HeaderSection extends StatelessWidget {
-  final String loginTitle;
-  final String loginSubtitle;
-  const HeaderSection({
-    super.key,
-    required this.loginTitle,
-    required this.loginSubtitle,
-  });
+  final String title;
+  final String subtitle;
+  const HeaderSection({super.key, required this.title, required this.subtitle});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(loginTitle, style: AppTextStyles.title),
+        Text(title, style: AppTextStyles.title),
         const SizedBox(height: AppSizes.spaceSmall),
         Text(
-          loginSubtitle,
+          subtitle,
           style: AppTextStyles.subtitle,
           textAlign: TextAlign.center,
         ),
