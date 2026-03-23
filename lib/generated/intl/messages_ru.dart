@@ -26,11 +26,21 @@ class MessageLookup extends MessageLookupByLibrary {
       "Уже есть аккаунт?",
     ),
     "emailHint": MessageLookupByLibrary.simpleMessage("Введите вашу почту"),
+    "emailInvalid": MessageLookupByLibrary.simpleMessage(
+      "Введите корректный email",
+    ),
     "emailLabel": MessageLookupByLibrary.simpleMessage("Электронная почта"),
+    "emailRequired": MessageLookupByLibrary.simpleMessage("Введите вашу почту"),
     "fullNameHint": MessageLookupByLibrary.simpleMessage(
       "Введите ваше полное имя",
     ),
     "fullNameLabel": MessageLookupByLibrary.simpleMessage("Полное имя"),
+    "fullNameRequired": MessageLookupByLibrary.simpleMessage(
+      "Введите полное имя",
+    ),
+    "fullNameTooShort": MessageLookupByLibrary.simpleMessage(
+      "Имя должно содержать минимум 2 символа",
+    ),
     "languageName": MessageLookupByLibrary.simpleMessage("Русский"),
     "loginSubtitle": MessageLookupByLibrary.simpleMessage(
       "Откройте для себя эксклюзивные мировые предложения.",
@@ -38,8 +48,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginTitle": MessageLookupByLibrary.simpleMessage(
       "Войдите в свой аккаунт",
     ),
+    "onlyLettersName": MessageLookupByLibrary.simpleMessage("Только буквы"),
     "passwordHint": MessageLookupByLibrary.simpleMessage("Введите пароль"),
     "passwordLabel": MessageLookupByLibrary.simpleMessage("Пароль"),
+    "passwordRequired": MessageLookupByLibrary.simpleMessage("Введите пароль"),
+    "passwordTooShort": MessageLookupByLibrary.simpleMessage(
+      "Пароль должен содержать минимум 6 символов",
+    ),
     "registerSubTitle": MessageLookupByLibrary.simpleMessage(
       "Присоединяйтесь и начните пользоваться приложением",
     ),

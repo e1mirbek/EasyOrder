@@ -4,7 +4,6 @@ import 'package:easy_order/core/constants/app_assets.dart';
 import 'package:easy_order/core/constants/app_routes.dart';
 import 'package:easy_order/core/constants/app_sizes.dart';
 import 'package:easy_order/generated/l10n.dart';
-import 'package:easy_order/views/screens/authentication_screens/register_screen.dart';
 import 'package:easy_order/views/screens/authentication_screens/widgets/account_query_row.dart';
 import 'package:easy_order/views/screens/authentication_screens/widgets/language_selector/language_selector.dart';
 import 'package:easy_order/views/screens/authentication_screens/widgets/welcome_Illustration.dart';
@@ -56,6 +55,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         const SizedBox(height: AppSizes.spaceSmall),
                         // --- FORM FIELDS ---
                         LabeledTextField(
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Enter the email';
+                            } else {
+                              null;
+                            }
+                            return null;
+                          },
                           label: S.of(context).emailLabel,
                           hintText: S.of(context).emailHint,
                           prefixIcon: AppAssets.emaiIcon,

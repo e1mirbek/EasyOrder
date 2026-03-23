@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       initialRoute: AppRoutes.login,
       routes: {
         AppRoutes.login: (context) => const LoginScreen(),
-        AppRoutes.register: (context) => const RegisterScreen(),
+        AppRoutes.register: (context) => RegisterScreen(),
       },
       // --- Локализация ---
       locale: languageController.appLocale,

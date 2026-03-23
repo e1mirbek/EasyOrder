@@ -28,18 +28,37 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailHint": MessageLookupByLibrary.simpleMessage(
       "Электрондук почтаңызды киргизиңиз",
     ),
+    "emailInvalid": MessageLookupByLibrary.simpleMessage(
+      "Туура email дарегин киргизиңиз",
+    ),
     "emailLabel": MessageLookupByLibrary.simpleMessage("Электрондук почта"),
+    "emailRequired": MessageLookupByLibrary.simpleMessage(
+      "Электрондук почтаңызды киргизиңиз",
+    ),
     "fullNameHint": MessageLookupByLibrary.simpleMessage(
       "Толук аты-жөнүңүздү киргизиңиз",
     ),
     "fullNameLabel": MessageLookupByLibrary.simpleMessage("Толук аты-жөнү"),
+    "fullNameRequired": MessageLookupByLibrary.simpleMessage(
+      "Толук аты-жөнүңүздү киргизиңиз",
+    ),
+    "fullNameTooShort": MessageLookupByLibrary.simpleMessage(
+      "Аты кеминде 2 белгиден турушу керек",
+    ),
     "languageName": MessageLookupByLibrary.simpleMessage("Кыргызча"),
     "loginSubtitle": MessageLookupByLibrary.simpleMessage(
       "Дүйнөлүк өзгөчө сунуштарды өзүңүз үчүн ачыңыз.",
     ),
     "loginTitle": MessageLookupByLibrary.simpleMessage("Аккаунтуңузга кириңиз"),
+    "onlyLettersName": MessageLookupByLibrary.simpleMessage("Тамгалар гана"),
     "passwordHint": MessageLookupByLibrary.simpleMessage("Сырсөздү киргизиңиз"),
     "passwordLabel": MessageLookupByLibrary.simpleMessage("Сырсөз"),
+    "passwordRequired": MessageLookupByLibrary.simpleMessage(
+      "Сырсөздү киргизиңиз",
+    ),
+    "passwordTooShort": MessageLookupByLibrary.simpleMessage(
+      "Сырсөз кеминде 6 белгиден турушу керек",
+    ),
     "registerSubTitle": MessageLookupByLibrary.simpleMessage(
       "Бизге кошулуп, колдонмону колдоно баштаңыз",
     ),

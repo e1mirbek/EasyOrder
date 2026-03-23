@@ -178,6 +178,76 @@ class S {
   String get languageName {
     return Intl.message('English', name: 'languageName', desc: '', args: []);
   }
+
+  /// `Please enter your email`
+  String get emailRequired {
+    return Intl.message(
+      'Please enter your email',
+      name: 'emailRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid email address`
+  String get emailInvalid {
+    return Intl.message(
+      'Please enter a valid email address',
+      name: 'emailInvalid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your password`
+  String get passwordRequired {
+    return Intl.message(
+      'Please enter your password',
+      name: 'passwordRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must be at least 6 characters`
+  String get passwordTooShort {
+    return Intl.message(
+      'Password must be at least 6 characters',
+      name: 'passwordTooShort',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your full name`
+  String get fullNameRequired {
+    return Intl.message(
+      'Please enter your full name',
+      name: 'fullNameRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name must be at least 2 characters`
+  String get fullNameTooShort {
+    return Intl.message(
+      'Name must be at least 2 characters',
+      name: 'fullNameTooShort',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Only letters allowed`
+  String get onlyLettersName {
+    return Intl.message(
+      'Only letters allowed',
+      name: 'onlyLettersName',
+      desc: 'Validation message when input should contain only letters',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

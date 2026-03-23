@@ -26,18 +26,39 @@ class MessageLookup extends MessageLookupByLibrary {
       "Already have an account?",
     ),
     "emailHint": MessageLookupByLibrary.simpleMessage("Enter your email"),
+    "emailInvalid": MessageLookupByLibrary.simpleMessage(
+      "Please enter a valid email address",
+    ),
     "emailLabel": MessageLookupByLibrary.simpleMessage("Email"),
+    "emailRequired": MessageLookupByLibrary.simpleMessage(
+      "Please enter your email",
+    ),
     "fullNameHint": MessageLookupByLibrary.simpleMessage(
       "Enter your full name",
     ),
     "fullNameLabel": MessageLookupByLibrary.simpleMessage("Full Name"),
+    "fullNameRequired": MessageLookupByLibrary.simpleMessage(
+      "Please enter your full name",
+    ),
+    "fullNameTooShort": MessageLookupByLibrary.simpleMessage(
+      "Name must be at least 2 characters",
+    ),
     "languageName": MessageLookupByLibrary.simpleMessage("English"),
     "loginSubtitle": MessageLookupByLibrary.simpleMessage(
       "Discover exclusive global deals.",
     ),
     "loginTitle": MessageLookupByLibrary.simpleMessage("Welcome back!"),
+    "onlyLettersName": MessageLookupByLibrary.simpleMessage(
+      "Only letters allowed",
+    ),
     "passwordHint": MessageLookupByLibrary.simpleMessage("Enter your password"),
     "passwordLabel": MessageLookupByLibrary.simpleMessage("Password"),
+    "passwordRequired": MessageLookupByLibrary.simpleMessage(
+      "Please enter your password",
+    ),
+    "passwordTooShort": MessageLookupByLibrary.simpleMessage(
+      "Password must be at least 6 characters",
+    ),
     "registerSubTitle": MessageLookupByLibrary.simpleMessage(
       "Join us and start using the app",
     ),
