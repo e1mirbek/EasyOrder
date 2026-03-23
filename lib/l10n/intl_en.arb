@@ -41,5 +41,17 @@
     "description": "Text shown on auth screen asking if user already has an account"
   },
   "languageName": "English",
-  "@languageName": {}
+  "@languageName": {},
+  "emailRequired": "Please enter your email",
+  "@emailRequired": {},
+  "emailInvalid": "Please enter a valid email address",
+  "@emailInvalid": {},
+  "passwordRequired": "Please enter your password",
+  "@passwordRequired": {},
+  "passwordTooShort": "Password must be at least 6 characters",
+  "@passwordTooShort": {},
+  "fullNameRequired": "Please enter your full name",
+  "@fullNameRequired": {},
+  "fullNameTooShort": "Name must be at least 2 characters",
+  "@fullNameTooShort": {}
 }

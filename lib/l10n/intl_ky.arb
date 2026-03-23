@@ -27,5 +27,17 @@
   "alreadyHaveAccount": "Аккаунтуңуз барбы?",
   "@alreadyHaveAccount": {},
   "languageName": "Кыргызча",
-  "@languageName": {}
+  "@languageName": {},
+  "emailRequired": "Электрондук почтаңызды киргизиңиз",
+  "@emailRequired": {},
+  "emailInvalid": "Туура email дарегин киргизиңиз",
+  "@emailInvalid": {},
+  "passwordRequired": "Сырсөздү киргизиңиз",
+  "@passwordRequired": {},
+  "passwordTooShort": "Сырсөз кеминде 6 белгиден турушу керек",
+  "@passwordTooShort": {},
+  "fullNameRequired": "Толук аты-жөнүңүздү киргизиңиз",
+  "@fullNameRequired": {},
+  "fullNameTooShort": "Аты кеминде 2 белгиден турушу керек",
+  "@fullNameTooShort": {}
 }

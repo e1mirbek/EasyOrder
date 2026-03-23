@@ -27,5 +27,17 @@
   "alreadyHaveAccount": "Уже есть аккаунт?",
   "@alreadyHaveAccount": {},
   "languageName": "Русский",
-  "@languageName": {}
+  "@languageName": {},
+  "emailRequired": "Введите вашу почту",
+  "@emailRequired": {},
+  "emailInvalid": "Введите корректный email",
+  "@emailInvalid": {},
+  "passwordRequired": "Введите пароль",
+  "@passwordRequired": {},
+  "passwordTooShort": "Пароль должен содержать минимум 6 символов",
+  "@passwordTooShort": {},
+  "fullNameRequired": "Введите полное имя",
+  "@fullNameRequired": {},
+  "fullNameTooShort": "Имя должно содержать минимум 2 символа",
+  "@fullNameTooShort": {}
 }
