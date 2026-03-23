@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       // --- Навигация ---
       initialRoute: AppRoutes.login,
       routes: {
-        AppRoutes.login: (context) => const LoginScreen(),
+        AppRoutes.login: (context) => LoginScreen(),
         AppRoutes.register: (context) => RegisterScreen(),
       },
       // --- Локализация ---

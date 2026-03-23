@@ -7,10 +7,10 @@ import 'package:easy_order/core/utils/app_validator.dart';
 import 'package:easy_order/generated/l10n.dart';
 import 'package:easy_order/views/screens/authentication_screens/widgets/account_query_row.dart';
 import 'package:easy_order/views/screens/authentication_screens/widgets/language_selector/language_selector.dart';
-import 'package:easy_order/views/screens/authentication_screens/widgets/welcome_Illustration.dart';
-import 'package:easy_order/views/screens/authentication_screens/widgets/header_section.dart';
+import 'package:easy_order/views/screens/authentication_screens/widgets/header/welcome_Illustration.dart';
+import 'package:easy_order/views/screens/authentication_screens/widgets/header/header_section.dart';
 import 'package:easy_order/views/widgets/custom_button.dart';
-import 'package:easy_order/views/screens/authentication_screens/widgets/labeled_text_field.dart';
+import 'package:easy_order/views/screens/authentication_screens/widgets/fields/labeled_text_field.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatelessWidget {
