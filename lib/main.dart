@@ -1,3 +1,4 @@
+
 import 'package:easy_order/core/constants/app_routes.dart';
 import 'package:easy_order/core/theme/app_theme.dart';
 import 'package:easy_order/generated/l10n.dart';
@@ -8,9 +9,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(
     MultiProvider(
       providers: [ChangeNotifierProvider(create: (_) => LanguageProvider())],
