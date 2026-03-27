@@ -1,4 +1,4 @@
-import 'package:easy_order/controllers/local_provider.dart';
+import 'package:easy_order/controllers/providers/local_provider.dart';
 import 'package:easy_order/core/constants/app_routes.dart';
 import 'package:easy_order/core/theme/app_theme.dart';
 import 'package:easy_order/firebase_options.dart';
@@ -22,20 +22,16 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final languageController = Provider.of<LanguageProvider>(context);
     final locale = ref.watch(localControllerProvider);
     return MaterialApp(
-      // --- Основные настройки ---
       title: 'Easy Order',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      // --- Навигация ---
       initialRoute: AppRoutes.login,
       routes: {
         AppRoutes.login: (context) => LoginScreen(),
         AppRoutes.register: (context) => RegisterScreen(),
       },
-      // --- Локализация ---
       locale: locale,
       localizationsDelegates: const [
         S.delegate,

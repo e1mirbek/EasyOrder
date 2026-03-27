@@ -1,4 +1,4 @@
-import 'package:easy_order/controllers/local_provider.dart';
+import 'package:easy_order/controllers/providers/local_provider.dart';
 import 'package:easy_order/core/constants/app_assets.dart';
 import 'package:easy_order/core/constants/app_sizes.dart';
 import 'package:easy_order/core/theme/app_colors.dart';

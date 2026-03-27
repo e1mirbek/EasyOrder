@@ -1,16 +1,23 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-
-
-final authRepositoryProvider = Provider(
-  (ref) => AuthRepository(FirebaseAuth.instance),
-);
 
 class AuthRepository {
 
   final FirebaseAuth _auth;
   AuthRepository(this._auth);
 
+  // Стрим для отслеживания состояния (залогинен или нет)
+
+
+  // Получить текущего пользователя (если он есть)
+
+
+  // РЕГИСТРАЦИЯ
+
+
+  // ВХОД
+
+
+  // ВЫХОД
 
 }
