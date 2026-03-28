@@ -1,4 +1,4 @@
-import 'package:easy_order/controllers/providers/local_provider.dart';
+import 'package:easy_order/providers/local_provider.dart';
 import 'package:easy_order/core/constants/app_routes.dart';
 import 'package:easy_order/core/theme/app_theme.dart';
 import 'package:easy_order/firebase_options.dart';
