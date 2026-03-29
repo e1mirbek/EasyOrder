@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class AuthController {
+class AuthController extends Notifier <AsyncValue<void>> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   Future<String> registerNewUser(
@@ -8,19 +9,14 @@ class AuthController {
     String fullName,
     String password,
   ) async {
-    // Логика регистрации нового пользователя
-    // Например, можно использовать FirebaseAuth для регистрации
-
-    String res = 'Some error occurred';
-
-    // Пример регистрации с помощью FirebaseAuth
+    String res = 'Произошла ошибка.';
     try {
       if (email.isNotEmpty && fullName.isNotEmpty && password.isNotEmpty) {
         await _auth.createUserWithEmailAndPassword(
           email: email,
           password: password,
         );
-      }
+      } 
       res = 'success';
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -34,5 +30,10 @@ class AuthController {
       err.toString();
     }
     return res;
+  }
+  
+  @override
+  AsyncValue<void> build() {
+    return const AsyncValue.data(null);
   }
 }
