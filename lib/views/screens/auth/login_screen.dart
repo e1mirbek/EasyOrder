@@ -1,5 +1,6 @@
 // ignore: unused_import
 import 'dart:developer' as dev;
+import 'package:easy_order/controllers/auth_controller.dart';
 import 'package:easy_order/core/constants/app_assets.dart';
 import 'package:easy_order/core/constants/app_routes.dart';
 import 'package:easy_order/core/constants/app_sizes.dart';
@@ -15,8 +16,10 @@ import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+  final AuthController authController = AuthController();
   late String email;
   late String password;
+  late String fullName;
   LoginScreen({super.key});
 
   @override
@@ -106,6 +109,11 @@ class LoginScreen extends StatelessWidget {
                             child: CustomButton(
                               onPressed: () {
                                 if (_formkey.currentState!.validate()) {
+                                  authController.registerNewUser(
+                                    email,
+                                    fullName,
+                                    password,
+                                  );
                                   dev.log('success');
                                   dev.log('email: $email');
                                   dev.log('password: $password');

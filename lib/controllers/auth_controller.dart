@@ -1,8 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class AuthController extends Notifier <AsyncValue<void>> {
+class AuthController extends Notifier<AsyncValue<void>> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   Future<String> registerNewUser(
     String email,
@@ -12,11 +15,22 @@ class AuthController extends Notifier <AsyncValue<void>> {
     String res = 'Произошла ошибка.';
     try {
       if (email.isNotEmpty && fullName.isNotEmpty && password.isNotEmpty) {
-        await _auth.createUserWithEmailAndPassword(
-          email: email,
-          password: password,
-        );
-      } 
+        UserCredential userCredential = await _auth
+            .createUserWithEmailAndPassword(email: email, password: password);
+        await _firestore
+            .collection('buyers')
+            .doc(userCredential.user!.uid)
+            .set({
+              'fullName': fullName,
+              'profilePicture': '',
+              'uid': userCredential.user!.uid,
+              'pinCode': '',
+              'location': '',
+              'city': '',
+              'state': '',
+            });
+      }
+
       res = 'success';
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -31,7 +45,7 @@ class AuthController extends Notifier <AsyncValue<void>> {
     }
     return res;
   }
-  
+
   @override
   AsyncValue<void> build() {
     return const AsyncValue.data(null);
