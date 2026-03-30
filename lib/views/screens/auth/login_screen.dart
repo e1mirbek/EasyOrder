@@ -4,8 +4,10 @@ import 'package:easy_order/controllers/auth_controller.dart';
 import 'package:easy_order/core/constants/app_assets.dart';
 import 'package:easy_order/core/constants/app_routes.dart';
 import 'package:easy_order/core/constants/app_sizes.dart';
+import 'package:easy_order/core/theme/app_colors.dart';
 import 'package:easy_order/core/utils/app_validator.dart';
 import 'package:easy_order/generated/l10n.dart';
+import 'package:easy_order/providers/auth_controller_provider.dart';
 import 'package:easy_order/views/screens/auth/widgets/account_query_row.dart';
 import 'package:easy_order/views/screens/auth/widgets/language_selector/language_selector.dart';
 import 'package:easy_order/views/screens/auth/widgets/header/welcome_Illustration.dart';
@@ -13,17 +15,38 @@ import 'package:easy_order/views/screens/auth/widgets/header/header_section.dart
 import 'package:easy_order/views/widgets/custom_button.dart';
 import 'package:easy_order/views/screens/auth/widgets/fields/labeled_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends ConsumerStatefulWidget {
+  const LoginScreen({super.key});
+
+  @override
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends ConsumerState<LoginScreen> {
+
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+
   final AuthController authController = AuthController();
-  late String email;
-  late String password;
-  late String fullName;
-  LoginScreen({super.key});
+
+  String email = '';
+
+  String password = '';
 
   @override
   Widget build(BuildContext context) {
+  
+     final authState = ref.watch(authControllerProvider);
+
+     // 2. Слушаем ошибки для показа SnackBar
+    ref.listen<AsyncValue<void>>(authControllerProvider, (previous, next) {
+      next.whenOrNull(error: (error, _) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(error.toString()), backgroundColor: AppColors.error),
+        );
+      });
+    });
     ValueNotifier<bool> isObscureNotifier = ValueNotifier<bool>(true);
     return Scaffold(
       body: SafeArea(
@@ -109,17 +132,11 @@ class LoginScreen extends StatelessWidget {
                             child: CustomButton(
                               onPressed: () {
                                 if (_formkey.currentState!.validate()) {
-                                  authController.registerNewUser(
-                                    email,
-                                    fullName,
-                                    password,
-                                  );
-                                  dev.log('success');
-                                  dev.log('email: $email');
-                                  dev.log('password: $password');
+                                   ref.read(authControllerProvider.notifier).lo
                                 }
                               },
                               title: S.of(context).signUp,
+                              isLoading: isLoading,
                             ),
                           ),
                           const SizedBox(height: AppSizes.spaceSmall),

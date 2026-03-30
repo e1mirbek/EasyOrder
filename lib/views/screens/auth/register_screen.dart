@@ -15,19 +15,41 @@ import 'package:easy_order/views/widgets/custom_button.dart';
 import 'package:easy_order/views/screens/auth/widgets/fields/labeled_text_field.dart';
 import 'package:flutter/material.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
+  RegisterScreen({super.key});
+
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+
   final AuthController authController = AuthController();
 
   late String email;
+
   late String fullName;
+
   late String password;
 
-  RegisterScreen({super.key});
+  bool isLoading = false;
+
+  registerUser() async {
+    final res = await authController.registerNewUser(email, fullName, password);
+    if (res == 'success') {
+      Navigator.pushNamed(context, AppRoutes.login);
+    } else if (res != 'success') {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(res), backgroundColor: AppColors.error),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     final ValueNotifier<bool> isObscureNotifier = ValueNotifier<bool>(true);
+
     return Scaffold(
       body: SafeArea(
         child: LayoutBuilder(
@@ -116,28 +138,17 @@ class RegisterScreen extends StatelessWidget {
                             child: CustomButton(
                               onPressed: () async {
                                 if (_formkey.currentState!.validate()) {
-                                  final result = await authController
-                                      .registerNewUser(
-                                        email,
-                                        fullName,
-                                        password,
-                                      );
-                                  if (result != 'success') {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(result),
-                                        backgroundColor: AppColors.error,
-                                      ),
-                                    );
-                                  }
+                                  setState(() {
+                                    isLoading = true;
+                                  });
+                                  await registerUser();
+                                  isLoading = false;
                                 } else {
                                   dev.log('validation failed');
-                                  dev.log('email: $email');
-                                  dev.log('fullName: $fullName');
-                                  dev.log('password: $password');
                                 }
                               },
                               title: S.of(context).signUp,
+                              isLoading: isLoading,
                             ),
                           ),
                           const SizedBox(height: AppSizes.spaceSmall),

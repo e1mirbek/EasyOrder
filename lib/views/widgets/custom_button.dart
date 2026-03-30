@@ -5,14 +5,24 @@ import 'package:flutter/material.dart';
 class CustomButton extends StatelessWidget {
   final String title;
   final void Function()? onPressed;
-  const CustomButton({super.key, this.onPressed, required this.title});
+  final bool isLoading;
+  const CustomButton({
+    super.key,
+    this.onPressed,
+    required this.title,
+    required this.isLoading,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(foregroundColor: AppColors.white),
-      onPressed: onPressed,
-      child: Center(child: Text(title, style: AppTextStyles.buttontitle)),
+      onPressed: isLoading ? null : onPressed,
+      child: Center(
+        child: isLoading
+            ? const CircularProgressIndicator(color: AppColors.white)
+            : Text(title, style: AppTextStyles.buttontitle),
+      ),
     );
   }
 }
