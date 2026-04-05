@@ -43,5 +43,10 @@
   "onlyLettersName": "Тамгалар гана",
   "@onlyLettersName": {},
   "dontHaveAccount": "Аккаунтуңуз жокпу?",
-  "@dontHaveAccount": {}
+  "@dontHaveAccount": {},
+  "emailAlreadyInUse": "Эта почта уже занята",
+  "userNotFound": "Пользователь не найден",
+  "wrongPassword": "Неверный пароль",
+  "networkError": "Проверьте интернет-соединение",
+  "serverError": "Ошибка сервера: {code}"
 }

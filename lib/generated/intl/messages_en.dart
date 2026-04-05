@@ -20,6 +20,8 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(code) => "Server error: ${code}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
@@ -27,6 +29,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Don’t have an account?",
+    ),
+    "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
+      "This email is already in use",
     ),
     "emailHint": MessageLookupByLibrary.simpleMessage("Enter your email"),
     "emailInvalid": MessageLookupByLibrary.simpleMessage(
@@ -51,6 +56,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Discover exclusive global deals.",
     ),
     "loginTitle": MessageLookupByLibrary.simpleMessage("Welcome back!"),
+    "networkError": MessageLookupByLibrary.simpleMessage(
+      "Check your internet connection",
+    ),
     "onlyLettersName": MessageLookupByLibrary.simpleMessage(
       "Only letters allowed",
     ),
@@ -68,7 +76,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "registerTitle": MessageLookupByLibrary.simpleMessage(
       "Create your account",
     ),
+    "serverError": m0,
     "signIn": MessageLookupByLibrary.simpleMessage("Sign in"),
     "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
+    "userNotFound": MessageLookupByLibrary.simpleMessage("User not found"),
+    "wrongPassword": MessageLookupByLibrary.simpleMessage("Incorrect password"),
   };
 }

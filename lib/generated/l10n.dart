@@ -258,6 +258,56 @@ class S {
       args: [],
     );
   }
+
+  /// `This email is already in use`
+  String get emailAlreadyInUse {
+    return Intl.message(
+      'This email is already in use',
+      name: 'emailAlreadyInUse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User not found`
+  String get userNotFound {
+    return Intl.message(
+      'User not found',
+      name: 'userNotFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Incorrect password`
+  String get wrongPassword {
+    return Intl.message(
+      'Incorrect password',
+      name: 'wrongPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check your internet connection`
+  String get networkError {
+    return Intl.message(
+      'Check your internet connection',
+      name: 'networkError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Server error: {code}`
+  String serverError(Object code) {
+    return Intl.message(
+      'Server error: $code',
+      name: 'serverError',
+      desc: '',
+      args: [code],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

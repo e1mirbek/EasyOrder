@@ -61,5 +61,10 @@
   "dontHaveAccount": "Don’t have an account?",
   "@dontHaveAccount": {
     "description": "Text shown on auth screen asking if user does not have an account"
-  }
+  },
+  "emailAlreadyInUse": "This email is already in use",
+  "userNotFound": "User not found",
+  "wrongPassword": "Incorrect password",
+  "networkError": "Check your internet connection",
+  "serverError": "Server error: {code}"
 }

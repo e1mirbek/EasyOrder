@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_order/core/errors/failure.dart';
+import 'package:easy_order/core/utils/auth_error_handler.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -49,11 +51,8 @@ class AuthRepository {
         'createdAt': FieldValue.serverTimestamp(),
       });
     } on FirebaseAuthException catch (e) {
-      // Кастомизируем ошибки для юзера
-      if (e.code == 'email-already-in-use') {
-        throw 'Эта почта уже занята другим пользователем';
-      }
-      throw e.message ?? 'Произошла ошибка при регистрации';
+      final errorMessage = AuthErrorHandler.mapFirebaseError(e.code);
+      throw AuthFailure(errorMessage);
     }
   }
 
@@ -68,13 +67,8 @@ class AuthRepository {
       );
     } on FirebaseAuthException catch (e) {
       // Здесь мы ловим конкретные ошибки от Firebase
-      if (e.code == 'user-not-found') {
-        throw 'Пользователь с таким email не найден';
-      } else if (e.code == 'wrong-password') {
-        throw 'Неверный пароль';
-      } else {
-        throw 'Ошибка входа: ${e.message}';
-      }
+      final errorMessage = AuthErrorHandler.mapFirebaseError(e.code);
+      throw AuthFailure(errorMessage);
     }
   }
 

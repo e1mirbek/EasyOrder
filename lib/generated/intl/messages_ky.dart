@@ -20,6 +20,8 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ky';
 
+  static String m0(code) => "Ошибка сервера: ${code}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
@@ -27,6 +29,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Аккаунтуңуз жокпу?",
+    ),
+    "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
+      "Эта почта уже занята",
     ),
     "emailHint": MessageLookupByLibrary.simpleMessage(
       "Электрондук почтаңызды киргизиңиз",
@@ -53,6 +58,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Дүйнөлүк өзгөчө сунуштарды өзүңүз үчүн ачыңыз.",
     ),
     "loginTitle": MessageLookupByLibrary.simpleMessage("Аккаунтуңузга кириңиз"),
+    "networkError": MessageLookupByLibrary.simpleMessage(
+      "Проверьте интернет-соединение",
+    ),
     "onlyLettersName": MessageLookupByLibrary.simpleMessage("Тамгалар гана"),
     "passwordHint": MessageLookupByLibrary.simpleMessage("Сырсөздү киргизиңиз"),
     "passwordLabel": MessageLookupByLibrary.simpleMessage("Сырсөз"),
@@ -66,7 +74,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Бизге кошулуп, колдонмону колдоно баштаңыз",
     ),
     "registerTitle": MessageLookupByLibrary.simpleMessage("Аккаунт түзүңүз"),
+    "serverError": m0,
     "signIn": MessageLookupByLibrary.simpleMessage("Кирүү"),
     "signUp": MessageLookupByLibrary.simpleMessage("Катталуу"),
+    "userNotFound": MessageLookupByLibrary.simpleMessage(
+      "Пользователь не найден",
+    ),
+    "wrongPassword": MessageLookupByLibrary.simpleMessage("Неверный пароль"),
   };
 }
