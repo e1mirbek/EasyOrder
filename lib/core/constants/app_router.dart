@@ -1,7 +1,11 @@
 import 'package:easy_order/features/auth/providers/auth_state_provider.dart';
 import 'package:easy_order/features/auth/views/login_screen.dart';
 import 'package:easy_order/features/auth/views/register_screen.dart';
-import 'package:easy_order/features/home/main_screen.dart';
+import 'package:easy_order/features/cart/cart_screen.dart';
+import 'package:easy_order/features/favorite/favorite_screen.dart';
+import 'package:easy_order/features/navigation/main_screen.dart';
+import 'package:easy_order/features/home/views/home_screen.dart';
+import 'package:easy_order/features/profile/profile_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -42,6 +46,26 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/main',
         name: 'main',
         builder: (context, state) => const MainScreen(),
+      ),
+      GoRoute(
+        path: '/home',
+        name: 'home',
+        builder: (context, state) => const HomeScreen(),
+      ),
+      GoRoute(
+        path: '/cart',
+        name: 'cart',
+        builder: (context, state) => const CartScreen(),
+      ),
+      GoRoute(
+        path: '/favorite',
+        name: 'favorite',
+        builder: (context, state) => const FavoriteScreen(),
+      ),
+      GoRoute(
+        path: '/profile',
+        name: 'profile',
+        builder: (context, state) => const ProfileScreen(),
       ),
     ],
   );

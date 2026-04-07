@@ -9,8 +9,6 @@ import 'package:flutter_riverpod/legacy.dart';
 /// error: (Ошибка) — показываем красный текст.
 
 /// data: (Данные) — показываем результат.
-///
-///
 
 final authControllerProvider =
     StateNotifierProvider<AuthController, AsyncValue<void>>((ref) {
@@ -21,19 +19,13 @@ class AuthController extends StateNotifier<AsyncValue<void>> {
   final Ref ref;
   AuthController(this.ref) : super(const AsyncValue.data(null));
 
-  // Метод для регистрации
   Future<void> register(String email, String password, String fullName) async {
-    // в процессе регистрации (загрузка)
     state = const AsyncLoading();
-
-    // Мы обращаемся к репозиторию через ref.read
-
     state = await AsyncValue.guard(
       () => ref.read(authRepositoryProvider).signUp(email, fullName, password),
     );
   }
 
-  // Метод для входа (логин)
   Future<void> login(String email, String password) async {
     state = const AsyncLoading();
 
@@ -43,7 +35,6 @@ class AuthController extends StateNotifier<AsyncValue<void>> {
     });
   }
 
-  // Метод для выхода (логаут)
   Future<void> logout() async {
     state = const AsyncLoading();
 

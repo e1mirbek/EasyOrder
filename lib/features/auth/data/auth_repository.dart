@@ -4,8 +4,6 @@ import 'package:easy_order/core/utils/auth_error_handler.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-// Провайдер, чтобы контроллер мог "нанять" этот репозиторий (пв)
-
 final authRepositoryProvider = Provider(
   (ref) => AuthRepository(
     auth: FirebaseAuth.instance,
@@ -23,8 +21,7 @@ class AuthRepository {
   }) : _auth = auth,
        _firestore = firestore;
 
-  // Стрим для отслеживания состояния (залогинен или нет)
-
+  /// стрим для отслеживания изменений в состоянии авторизации
   Stream<User?> get authStateChanges => _auth.authStateChanges();
 
   Future<void> signUp(String email, String fullName, String password) async {
