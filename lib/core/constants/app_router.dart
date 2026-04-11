@@ -13,23 +13,23 @@ final routerProvider = Provider<GoRouter>((ref) {
   final authState = ref.watch(authStateProvider);
 
   return GoRouter(
-    initialLocation: '/login',
+    initialLocation: '/main',
     redirect: (context, state) {
       final user = authState.value;
-      final isLoginIn =
-          state.matchedLocation == '/login' ||
-          state.matchedLocation == '/register';
+      // final isLoginIn =
+      //     state.matchedLocation == '/login' ||
+      //     state.matchedLocation == '/register';
 
       // Если пользователь не залогинен и пытается попасть на страницу, отличную от логина или регистрации, перенаправляем его на страницу логина
-      if (user == null) {
-        return isLoginIn ? null : '/login';
-      }
+      // if (user == null) {
+      //   return isLoginIn ? null : '/login';
+      // }
 
-      // Если пользователь залогинен и пытается попасть на страницу логина или регистрации, перенаправляем его на главную страницу
-      if (isLoginIn) {
-        return '/main';
-      }
-      return null;
+      // // Если пользователь залогинен и пытается попасть на страницу логина или регистрации, перенаправляем его на главную страницу
+      // if (isLoginIn) {
+      //   return '/main';
+      // }
+      // return null;
     },
     routes: <RouteBase>[
       GoRoute(

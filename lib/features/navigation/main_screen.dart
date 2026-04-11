@@ -11,41 +11,69 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class MainScreen extends ConsumerWidget {
   const MainScreen({super.key});
 
+  static const List<Widget> _screens = [
+    HomeScreen(),
+    FavoriteScreen(),
+    ShopScreen(),
+    CartScreen(),
+    ProfileScreen(),
+  ];
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final index = ref.watch(navigationIndexProvider);
-
-    final List<Widget> screens = [
-      const HomeScreen(),
-      const FavoriteScreen(),
-      const ShopScreen(),
-      const CartScreen(),
-      const ProfileScreen(),
-    ];
-
     return Scaffold(
-      body: IndexedStack(index: index, children: screens),
-      bottomNavigationBar: BottomNavigationBar(
+      // IndexedStack сохраняет состояние всех вкладок (скролл, введенный текст)
+      body: IndexedStack(index: index, children: _screens),
+      bottomNavigationBar: _buildBottomNavBar(index, ref),
+    );
+  }
+
+  Widget _buildBottomNavBar(int index, WidgetRef ref) {
+    return Container(
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            // ignore: deprecated_member_use
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 10,
+            spreadRadius: 2,
+          ),
+        ],
+      ),
+      child: BottomNavigationBar(
+        elevation: 0.0,
         currentIndex: index,
         onTap: (value) =>
             ref.read(navigationIndexProvider.notifier).state = value,
-        type: BottomNavigationBarType.fixed, // Чтобы иконки не "прыгали"
-        selectedItemColor: AppColors.primary, // Твой розовый/красный цвет
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: AppColors.primary,
         unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Главная'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Избранное',
+        backgroundColor: AppColors.white,
+        items: [
+          _buildBottomNavBarItem(Icons.home, Icons.home, 'Главная'),
+          _buildBottomNavBarItem(Icons.favorite, Icons.favorite, 'Избранное'),
+          _buildBottomNavBarItem(Icons.store, Icons.store, 'Магазин'),
+          _buildBottomNavBarItem(
+            Icons.shopping_cart,
+            Icons.shopping_cart,
+            'Корзина',
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.store), label: 'Магазин'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Корзина',
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Профиль'),
+          _buildBottomNavBarItem(Icons.person, Icons.person, 'Профиль'),
         ],
       ),
+    );
+  }
+
+  BottomNavigationBarItem _buildBottomNavBarItem(
+    IconData icon,
+    IconData activeIcon,
+    String label,
+  ) {
+    return BottomNavigationBarItem(
+      icon: Icon(icon),
+      activeIcon: Icon(activeIcon),
+      label: label,
     );
   }
 }

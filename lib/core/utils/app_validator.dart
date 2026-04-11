@@ -46,7 +46,7 @@ class AppValidator {
 
     // Если мы передали originalPassword (значит это поле "Повторите пароль")
     if (originalPassword != null && value != originalPassword) {
-      return "Пароли не совпадают";
+      return 'Пароли не совпадают';
     }
 
     return null;
@@ -78,7 +78,7 @@ class AppValidator {
     // Убираем лишние пробелы и скобки перед проверкой
     final cleanPhone = value.replaceAll(RegExp(r'[^\d+]'), '');
     if (!_phoneRegExp.hasMatch(cleanPhone)) {
-      return "Неверный формат (+996XXXXXXXXX)";
+      return 'Неверный формат (+996XXXXXXXXX)';
     }
     return null;
   }
