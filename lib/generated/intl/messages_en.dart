@@ -20,7 +20,6 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
-  // ignore: strict_top_level_inference
   static String m0(errorCode) => "Server error: ${errorCode}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);

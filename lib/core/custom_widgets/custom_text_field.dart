@@ -3,7 +3,8 @@ import 'package:easy_order/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
-  final String labelText;
+  final String? labelText;
+  final String? hintText;
   final String prefixIcon;
   final Widget? suffixIcon;
   final bool obscureText;
@@ -12,8 +13,9 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   const CustomTextField({
     super.key,
-    required this.labelText,
+    this.labelText,
     required this.prefixIcon,
+    this.hintText,
     this.suffixIcon,
     this.obscureText = false,
     this.validator,
@@ -23,19 +25,27 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final borderRadius = BorderRadius.circular(12.0);
+    final commonBorder = OutlineInputBorder(
+      borderRadius: borderRadius,
+      borderSide: BorderSide.none,
+    );
     return TextFormField(
       controller: controller,
       onChanged: onChanged,
       validator: validator,
       obscureText: obscureText,
       decoration: InputDecoration(
+        contentPadding: const EdgeInsets.all(15.0),
+        isDense: true,
         fillColor: Colors.white,
         filled: true,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(9)),
-        focusedBorder: InputBorder.none,
-        enabledBorder: InputBorder.none,
-        errorBorder: InputBorder.none,
-        disabledBorder: InputBorder.none,
+        border: commonBorder,
+        focusedBorder: commonBorder,
+        enabledBorder: commonBorder,
+        errorBorder: commonBorder,
+        disabledBorder: commonBorder,
+        hintText: hintText,
         labelText: labelText,
         labelStyle: AppTextStyles.inputLabel,
         prefixIcon: Padding(

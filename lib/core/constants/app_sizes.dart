@@ -10,4 +10,5 @@ class AppSizes {
   /// размеры ассетов (изображений, иконки)
   static const double welcomeImageSize = 250.0;
   static const double fieldIconSize = 20.0;
+  static const double textFieldHeight = 40.0;
 }
