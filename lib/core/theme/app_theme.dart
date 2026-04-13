@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData(
-      scaffoldBackgroundColor: AppColors.greyLight,
+      scaffoldBackgroundColor: AppColors.scaffold,
+      primaryColor: AppColors.primary,
 
       /// input field
       inputDecorationTheme: InputDecorationTheme(

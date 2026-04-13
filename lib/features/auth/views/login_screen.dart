@@ -10,7 +10,7 @@ import 'package:easy_order/features/auth/views/widgets/account_query_row.dart';
 import 'package:easy_order/features/auth/views/widgets/language_selector/language_selector.dart';
 import 'package:easy_order/features/auth/views/widgets/header/welcome_Illustration.dart';
 import 'package:easy_order/features/auth/views/widgets/header/header_section.dart';
-import 'package:easy_order/core/custom_widgets/custom_button.dart';
+import 'package:easy_order/core/widgets/buttons/custom_button.dart';
 import 'package:easy_order/features/auth/views/widgets/fields/labeled_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

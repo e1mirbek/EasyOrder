@@ -8,10 +8,12 @@ environment:
   sdk: ^3.11.1
 
 dependencies:
+  cached_network_image: ^3.4.1
   cloud_firestore: ^6.2.0
   cupertino_icons: ^1.0.8
   firebase_auth: ^6.3.0
   firebase_core: ^4.5.0
+  firebase_storage: ^13.2.0
   flutter:
     sdk: flutter
   flutter_localization: ^0.3.3
@@ -24,7 +26,6 @@ dependencies:
   intl: ^0.20.2
 
 dev_dependencies:
-  firebase_storage: ^13.1.0
   flutter_lints: ^6.0.0
   flutter_test:
     sdk: flutter
