@@ -1,7 +1,7 @@
 // lib/features/home/widgets/home_header.dart
 import 'package:easy_order/core/constants/app_assets.dart';
 import 'package:easy_order/core/constants/app_sizes.dart';
-import 'package:easy_order/core/custom_widgets/custom_text_field.dart';
+import 'package:easy_order/core/widgets/fields/custom_text_field.dart';
 import 'package:easy_order/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
