@@ -34,8 +34,6 @@ class _HomeBannerState extends ConsumerState<HomeBanner> {
   @override
   Widget build(BuildContext context) {
     final banner = ref.watch(bannerProvider);
-    final screenWidth = MediaQuery.of(context).size.width;
-    final bannerWidth = screenWidth * _imageWidthFactor;
 
     return banner.when(
       data: (images) {
@@ -43,79 +41,31 @@ class _HomeBannerState extends ConsumerState<HomeBanner> {
           return const SizedBox.shrink();
         }
 
-        return Column(
-          children: [
-            SizedBox(
-              height: _bannerHeight,
-              child: PageView.builder(
-                controller: _pageController,
-                onPageChanged: (value) {
-                  setState(() {
-                    _currentPage = value;
-                  });
-                },
-                itemCount: images.length,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: _horizontalPadding,
-                      vertical: _verticalPadding,
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(_borderRadius),
-                      child: CachedNetworkImage(
-                        width: bannerWidth,
-                        imageUrl: images[index],
-                        fit: BoxFit.cover,
-                        placeholder: (context, url) => Container(
-                          width: bannerWidth,
-                          decoration: BoxDecoration(
-                            color: AppColors.grey200,
-                            borderRadius: BorderRadius.circular(_borderRadius),
-                          ),
-                        ),
-                        errorWidget: (context, url, error) =>
-                            const Icon(Icons.error),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                images.length,
-                (index) => _buildDot(index == _currentPage),
-              ),
-            ),
-          ],
+        return _BannerContent(
+          images: images,
+          pageController: _pageController,
+          currentPage: _currentPage,
+          bannerHeight: _bannerHeight,
+          horizontalPadding: _horizontalPadding,
+          verticalPadding: _verticalPadding,
+          borderRadius: _borderRadius,
+          imageWidthFactor: _imageWidthFactor,
+          dotBuilder: _buildDot,
+          onPageChanged: (value) {
+            setState(() {
+              _currentPage = value;
+            });
+          },
         );
       },
       error: (error, stackTrace) {
-        return Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Text('Не удалось загрузить баннеры'),
-              TextButton.icon(
-                onPressed: () => ref.invalidate(bannerProvider),
-                icon: const Icon(Icons.refresh),
-                label: const Text('Повторить'),
-              ),
-            ],
-          ),
+        return _BannerError(
+          onRetry: () => ref.invalidate(bannerProvider),
+          height: _bannerHeight,
         );
       },
       loading: () {
-        return Center(
-          child: AppLoader(
-            size: 20.0,
-            strokeWidth: 2.0,
-            color: AppColors.buttonBlue,
-          ),
-        );
+        return const _BannerLoading(height: _bannerHeight);
       },
     );
   }
@@ -129,6 +79,151 @@ class _HomeBannerState extends ConsumerState<HomeBanner> {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: isActive ? AppColors.buttonBlue : AppColors.white,
+      ),
+    );
+  }
+}
+
+class _BannerContent extends StatelessWidget {
+  const _BannerContent({
+    required this.images,
+    required this.pageController,
+    required this.currentPage,
+    required this.bannerHeight,
+    required this.horizontalPadding,
+    required this.verticalPadding,
+    required this.borderRadius,
+    required this.imageWidthFactor,
+    required this.dotBuilder,
+    required this.onPageChanged,
+  });
+
+  final List<String> images;
+  final PageController pageController;
+  final int currentPage;
+  final double bannerHeight;
+  final double horizontalPadding;
+  final double verticalPadding;
+  final double borderRadius;
+  final double imageWidthFactor;
+  final Widget Function(bool isActive) dotBuilder;
+  final ValueChanged<int> onPageChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final bannerWidth = screenWidth * imageWidthFactor;
+
+    return Column(
+      children: [
+        SizedBox(
+          height: bannerHeight,
+          child: PageView.builder(
+            controller: pageController,
+            onPageChanged: onPageChanged,
+            itemCount: images.length,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: horizontalPadding,
+                  vertical: verticalPadding,
+                ),
+                child: _BannerImage(
+                  imageUrl: images[index],
+                  width: bannerWidth,
+                  borderRadius: borderRadius,
+                ),
+              );
+            },
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: List.generate(
+            images.length,
+            (index) => dotBuilder(index == currentPage),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _BannerImage extends StatelessWidget {
+  const _BannerImage({
+    required this.imageUrl,
+    required this.width,
+    required this.borderRadius,
+  });
+
+  final String imageUrl;
+  final double width;
+  final double borderRadius;
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(borderRadius),
+      child: CachedNetworkImage(
+        width: width,
+        imageUrl: imageUrl,
+        fit: BoxFit.cover,
+        placeholder: (context, url) => Container(
+          width: width,
+          decoration: BoxDecoration(
+            color: AppColors.grey200,
+            borderRadius: BorderRadius.circular(borderRadius),
+          ),
+        ),
+        errorWidget: (context, url, error) => const Icon(Icons.error),
+      ),
+    );
+  }
+}
+
+class _BannerError extends StatelessWidget {
+  const _BannerError({required this.onRetry, required this.height});
+
+  final VoidCallback onRetry;
+  final double height;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: height,
+      child: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text('Не удалось загрузить баннеры'),
+            TextButton.icon(
+              onPressed: onRetry,
+              icon: const Icon(Icons.refresh),
+              label: const Text('Повторить'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _BannerLoading extends StatelessWidget {
+  const _BannerLoading({required this.height});
+
+  final double height;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: height,
+      child: const Center(
+        child: AppLoader(
+          size: 20.0,
+          strokeWidth: 2.0,
+          color: AppColors.buttonBlue,
+        ),
       ),
     );
   }
